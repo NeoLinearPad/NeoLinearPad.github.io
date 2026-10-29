@@ -59,11 +59,14 @@ document.querySelectorAll("[data-copy]").forEach((button) => {
   });
 });
 
-// After-purchase page: Lemon Squeezy sends buyers to thanks.html#key=<license key>.
-// The key is after "#", so it never reaches the web server or analytics.
+// After-purchase page: Lemon Squeezy sends buyers to thanks.html?key=<license key>
+// (its link field doesn't accept "#"; "#key=" also works). A key in "?" is removed from the
+// address bar right away, so it isn't left in bookmarks or picked up by analytics later.
 const setup = document.getElementById("setup");
 if (setup) {
-  const key = new URLSearchParams(location.hash.slice(1)).get("key") ?? "";
+  const fromQuery = new URLSearchParams(location.search).get("key");
+  const key = fromQuery ?? new URLSearchParams(location.hash.slice(1)).get("key") ?? "";
+  if (fromQuery) history.replaceState(null, "", location.pathname);
   const looksLikeKey = /^[A-Za-z0-9-]{8,64}$/.test(key);
   setup.dataset.hasKey = looksLikeKey ? "yes" : "no";
   if (looksLikeKey) {
