@@ -155,7 +155,16 @@ main {
   padding-left: 1.4em;
 }
 
-.guide-body li { margin-bottom: 8px; }
+.guide-body li { margin-bottom: 20px; }
+
+/* Screenshots under a step (they carry their own rounded corners) */
+.guide-body img {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  margin: 12px 0 0;
+}
 
 /* Download dialog: trial or buy */
 .get-dialog {
