@@ -15,6 +15,14 @@ document.querySelectorAll("[data-open]").forEach((button) => {
   button.addEventListener("click", () => dialog.showModal());
 });
 
+// index.html#get (the app's purchase links) opens with the trial / buy choice showing.
+if (location.hash === "#get") {
+  const dialog = document.getElementById("get-dialog");
+  dialog?.showModal();
+  // Once closed, drop #get so a reload shows the plain page.
+  dialog?.addEventListener("close", () => history.replaceState(null, "", location.pathname), { once: true });
+}
+
 document.querySelectorAll("dialog").forEach((dialog) => {
   dialog.querySelectorAll("[data-close]").forEach((button) => {
     button.addEventListener("click", () => dialog.close());
