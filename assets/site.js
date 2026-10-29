@@ -4,7 +4,7 @@ const SITE = {
   downloadURL: "",
   // Lemon Squeezy checkout link for the product ("Share" link in the dashboard). Test-mode links
   // work the same way.
-  checkoutURL: "",
+  checkoutURL: "https://neolinearpad.lemonsqueezy.com/checkout/buy/662a8764-a1ee-4a2e-baf4-fc9f876c14f7",  // test mode
 };
 
 // Buttons with data-open="<dialog id>" open that dialog; [data-close], Esc,
