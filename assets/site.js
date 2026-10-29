@@ -7,18 +7,25 @@ const SITE = {
   checkoutURL: "https://neolinearpad.lemonsqueezy.com/checkout/buy/662a8764-a1ee-4a2e-baf4-fc9f876c14f7",  // test mode
 };
 
+// Opens a dialog with the dialog itself focused, not its first button (the browser's default
+// would draw a focus ring on the close button). Tab still reaches the buttons.
+function openDialog(dialog) {
+  dialog.showModal();
+  dialog.focus();
+}
+
 // Buttons with data-open="<dialog id>" open that dialog; [data-close], Esc,
 // or a click outside the dialog close it.
 document.querySelectorAll("[data-open]").forEach((button) => {
   const dialog = document.getElementById(button.dataset.open);
   if (!dialog) return;
-  button.addEventListener("click", () => dialog.showModal());
+  button.addEventListener("click", () => openDialog(dialog));
 });
 
 // index.html#get (the app's purchase links) opens with the trial / buy choice showing.
 if (location.hash === "#get") {
   const dialog = document.getElementById("get-dialog");
-  dialog?.showModal();
+  if (dialog) openDialog(dialog);
   // Once closed, drop #get so a reload shows the plain page.
   dialog?.addEventListener("close", () => history.replaceState(null, "", location.pathname), { once: true });
 }
