@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>ご購入ありがとうございます · Neo LinearPad</title>
+  <link rel="icon" href="../assets/icon.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <main class="setup" id="setup">
+    <header class="setup-head">
+      <img class="setup-icon" src="../assets/icon.png" alt="">
+      <h1>ご購入ありがとうございます</h1>
+      <p>あと少しで使い始められます。</p>
+    </header>
+
+    <ol class="steps">
+      <li class="step">
+        <h2>アプリをインストール</h2>
+        <p>ダウンロードした .dmg を開き、Neo LinearPad を「アプリケーション」フォルダへドラッグしてください。</p>
+        <p class="step-aside">ダウンロードが始まらないときは
+          <a href="#" data-download>こちら</a>から。</p>
+      </li>
+
+      <li class="step">
+        <h2>ライセンスを登録</h2>
+        <div class="when-key">
+          <p>アプリをインストール後、こちらを押してください。</p>
+          <a class="action" id="activate" href="#">こちらをクリックでライセンスを自動登録</a>
+        </div>
+        <p class="when-no-key">ライセンスキーは、購入完了メールに記載されています。下の方法で登録してください。</p>
+      </li>
+
+      <li class="step step-manual">
+        <h2>または自分で登録する方法</h2>
+        <div class="when-key">
+          <div class="key-box">
+            <code id="license-key"></code>
+            <button type="button" class="copy" data-copy="license-key">コピー</button>
+          </div>
+        </div>
+        <p>メニューバーの Neo LinearPad のアイコンを右クリックし、「ライセンスキーを入力…」に貼り付けてください。</p>
+        <p class="step-aside">購入完了メールにも同じキーが届いています。</p>
+      </li>
+    </ol>
+  </main>
+
+  <script src="../assets/site.js"></script>
+</body>
+</html>
