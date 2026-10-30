@@ -166,6 +166,9 @@ main {
   margin: 12px 0 0;
 }
 
+/* A second image in the same step gets more room above it */
+.guide-body img + img { margin-top: 24px; }
+
 /* Download dialog: trial or buy */
 .get-dialog {
   width: min(520px, calc(100vw - 32px));
