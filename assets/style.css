@@ -113,6 +113,7 @@ main {
 .details-list li {
   margin-bottom: 14px;
   font-size: 17px;
+  font-weight: 700;  /* every item is a small heading, all alike */
 }
 
 .details-list li::marker { color: var(--sub); }
