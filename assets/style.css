@@ -104,6 +104,25 @@ main {
   font-size: 18px;
 }
 
+/* Details: same heading style as "Neo LinearPad は", a slightly smaller bulleted list */
+.details-list {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.details-list li {
+  margin-bottom: 14px;
+  font-size: 17px;
+}
+
+.details-list li::marker { color: var(--sub); }
+
+.details-list h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+
 /* Guides: headings that open their steps below */
 .guides {
   display: flex;
