@@ -105,6 +105,8 @@ main {
 }
 
 /* Details: same heading style as "Neo LinearPad は", a slightly smaller bulleted list */
+.about.details { padding-top: 60px; }  /* a little closer to its divider than the section above */
+
 .details-list {
   margin: 0;
   padding-left: 1.2em;
@@ -129,7 +131,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding-bottom: 96px;
+  padding-bottom: 72px;
 }
 
 /* Pill with a grey outline and the page colour inside, only as wide as its label, at the left.
