@@ -8,7 +8,7 @@
   <title>Neo LinearPad</title>
   <meta name="description" content="MacBook のトラックパッドの加速度をオフにし、一定の動きのまま好みの感度に設定できる Mac アプリ。">
   <link rel="icon" href="../assets/icon.png">
-  <link rel="stylesheet" href="../assets/style.css?v=13">
+  <link rel="stylesheet" href="../assets/style.css?v=15">
 </head>
 <body>
   <main>
@@ -78,8 +78,18 @@
         <li>アプリを終了しても感度等設定は保持されます。</li>
         <li>スイッチで本機能をオフにすることで、アプリ終了時と同等の効果でログイン項目を維持します。</li>
         <li>
-          <h3>開く度自動で起動しない場合</h3>
-          <!-- Content to come. -->
+          <details class="detail-more">
+            <summary>開く度自動で起動しない場合</summary>
+            <ol class="detail-steps">
+              <li>画面左上のりんごのマーク（Apple メニュー）をクリックし、「システム設定…」を選びます。</li>
+              <li>開いたウィンドウの左側の一覧から、「一般」をクリックします。</li>
+              <li>右側に並ぶ項目から、「ログイン項目と機能拡張」をクリックします（macOS 14 Sonoma では「ログイン項目」という名前です）。</li>
+              <li>いちばん上の「ログイン時に開く」の一覧に、Neo LinearPad があるか確認します。すでにある場合は、この先の操作は不要です。</li>
+              <li>一覧にない場合は、一覧のすぐ下にある「＋」ボタンをクリックします。</li>
+              <li>ファイルを選ぶ画面が開くので、左側の「アプリケーション」をクリックし、一覧から「Neo LinearPad」を選んで、右下の「開く」をクリックします。</li>
+              <li>「ログイン時に開く」の一覧に Neo LinearPad が加わったら完了です。次に Mac を起動したとき（ログインしたとき）から、自動で開くようになります。</li>
+            </ol>
+          </details>
         </li>
       </ul>
     </section>

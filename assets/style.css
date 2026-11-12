@@ -112,19 +112,45 @@ main {
   padding-left: 1.2em;
 }
 
-.details-list li {
+.details-list > li {
   margin-bottom: 14px;
   font-size: 17px;
   font-weight: 700;  /* every item is a small heading, all alike */
 }
 
-.details-list li::marker { color: var(--sub); }
+.details-list > li::marker { color: var(--sub); }
 
-.details-list h3 {
-  margin: 0;
-  font-size: 17px;
-  font-weight: 700;
+/* A detail item that opens: chevron right after the text, steps in normal body size */
+.detail-more summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  list-style: none;
 }
+
+.detail-more summary::-webkit-details-marker { display: none; }
+
+.detail-more summary::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-right: 1.8px solid var(--sub);
+  border-bottom: 1.8px solid var(--sub);
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s;
+}
+
+.detail-more[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+
+.detail-steps {
+  margin: 14px 0 6px;
+  padding-left: 1.5em;
+  font-size: 18px;      /* same as the "Neo LinearPad は" paragraphs */
+  font-weight: 400;
+}
+
+.detail-steps li { margin-bottom: 10px; }
 
 /* Guides: headings that open their steps below */
 .guides {
