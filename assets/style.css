@@ -90,7 +90,7 @@ main {
 /* About */
 .about {
   border-top: 1px solid var(--line);
-  padding: 80px 0 72px;
+  padding: 40px 0 72px;   /* heading sits close under its divider, like "詳細" */
 }
 
 .about h2 {
@@ -105,7 +105,6 @@ main {
 }
 
 /* Details: same heading style as "Neo LinearPad は", a slightly smaller bulleted list */
-.about.details { padding-top: 40px; }  /* sits close under its divider (not mirrored with the space above) */
 
 .details-list {
   margin: 0;
@@ -579,3 +578,6 @@ main {
   border-top: 1px solid var(--line);
   padding-top: 40px;
 }
+
+/* Support buttons are more formal than the guides: a softly rounded rectangle, not a pill */
+.guides.support .guide summary { border-radius: 10px; }
