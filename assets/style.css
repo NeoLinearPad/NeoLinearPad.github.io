@@ -583,12 +583,12 @@ main {
 .guides.support .guide summary { border-radius: 10px; }
 
 /* Support panels: same small text as the opened details, a calm mail button, copy boxes */
-.support-body { padding: 14px 0 6px 4px; font-size: 15px; line-height: 1.65; }
+.support-body { padding: 22px 0 6px 4px; font-size: 15px; line-height: 1.65; }
 .support-body p { margin: 0 0 10px; }
 
 .mail-button {
   display: inline-block;
-  margin: 4px 0 6px;
+  margin: 2px 0 26px;   /* a clear gap before the supplementary notes */
   padding: 9px 20px;
   border: 1.5px solid var(--outline);
   border-radius: 10px;
@@ -599,7 +599,6 @@ main {
 
 .mail-button:hover { border-color: var(--sub); }
 
-.mail-hint { margin-top: 0 !important; }
 .mail-fallback-lead { margin-top: 18px !important; }
 
 .copy-box {
