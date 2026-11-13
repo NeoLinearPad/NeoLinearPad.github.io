@@ -162,10 +162,15 @@ main {
   line-height: 1.65;
 }
 
-.step-note {
-  display: block;
-  margin-top: 4px;
-  padding-left: 1em;
+/* An aside right after a step's text, on the same line */
+.step-aside { color: var(--sub); }
+
+/* "※" note under the steps */
+.about .detail-footnote {
+  margin: 6px 0 4px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
   color: var(--sub);
 }
 
