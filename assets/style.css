@@ -588,7 +588,7 @@ main {
 
 .mail-button {
   display: inline-block;
-  margin: 2px 0 38px;   /* a clear gap before the supplementary notes */
+  margin: 2px 0 63px;   /* about one blank line more before the ※ notes */
   padding: 6px 14px;    /* hugs the text */
   border-radius: 8px;
   background: var(--chip);
@@ -600,7 +600,6 @@ main {
 
 .mail-button:hover { background: var(--line); }
 
-.mail-fallback-lead { margin-top: 18px !important; }
 
 /* "※" lines: a wrapped second line starts under the text, not under the mark */
 .note-line { padding-left: 1.2em; text-indent: -1.2em; }
@@ -611,7 +610,7 @@ main {
   gap: 10px;
   margin-bottom: 10px;
   padding: 10px 10px 10px 14px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--text);
   border-radius: 10px;
 }
 
