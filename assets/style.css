@@ -580,12 +580,4 @@ main {
 }
 
 /* Support buttons are more formal than the guides: a softly rounded rectangle, not a pill */
-/* Same box height as the guide buttons, larger heading-like text */
-.guides.support .guide summary {
-  border-radius: 10px;
-  padding-top: 11.2px;
-  padding-bottom: 11.2px;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.6;
-}
+.guides.support .guide summary { border-radius: 10px; }
