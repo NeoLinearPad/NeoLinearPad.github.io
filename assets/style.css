@@ -161,18 +161,10 @@ main {
   line-height: 1.65;
 }
 
-/* An aside right after a step's text, on the same line */
-.step-aside { color: var(--sub); }
-
-/* "※" note under the steps */
-.about .detail-footnote {
-  margin: 12px 0 4px 14px;   /* "※" lines up with the step numbers above */
-  font-size: 15px;           /* same as the steps */
-  font-weight: 400;
-  line-height: 1.65;
-  padding-left: 1em;         /* a wrapped second line starts under the text, not under "※" */
-  text-indent: -1em;
-}
+/* "※" note as the last item of the steps: the browser lines its mark up with the numbers
+   and wraps its text exactly like the steps, whatever the font. */
+.detail-steps .step-footnote { margin-top: 12px; }
+.detail-steps .step-footnote::marker { content: "※"; }
 
 /* Guides: headings that open their steps below */
 .guides {
