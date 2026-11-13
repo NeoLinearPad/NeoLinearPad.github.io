@@ -8,7 +8,7 @@
   <title>Neo LinearPad</title>
   <meta name="description" content="MacBook のトラックパッドの加速度をオフにし、一定の動きのまま好みの感度に設定できる Mac アプリ。">
   <link rel="icon" href="../assets/icon.png">
-  <link rel="stylesheet" href="../assets/style.css?v=35">
+  <link rel="stylesheet" href="../assets/style.css?v=36">
 </head>
 <body>
   <main>
@@ -127,7 +127,27 @@
     <section class="guides support">
       <details class="guide">
         <summary>返品、返金（購入後14日以内）</summary>
-        <div class="guide-body"></div>
+        <div class="guide-body support-body">
+          <p>購入から14日以内であれば、理由を問わず返金いたします。</p>
+          <a class="mail-button" href="mailto:support@neolinearpad.com?subject=Neo%20LinearPad%20%E8%BF%94%E9%87%91%E3%81%AE%E7%94%B3%E8%AB%8B&body=Neo%20LinearPad%20%E3%81%AE%E8%BF%94%E9%87%91%E3%82%92%E7%94%B3%E8%AB%8B%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%0A%0A%E8%B3%BC%E5%85%A5%E6%99%82%E3%81%AE%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%EF%BC%9A%E3%81%93%E3%81%AE%E3%83%A1%E3%83%BC%E3%83%AB%E3%81%AE%E5%B7%AE%E5%87%BA%E4%BA%BA%0A%E6%B3%A8%E6%96%87%E7%95%AA%E5%8F%B7%EF%BC%88%E3%82%8F%E3%81%8B%E3%82%8C%E3%81%B0%EF%BC%89%EF%BC%9A%0A">返金を申請する</a>
+          <p class="mail-hint">自動で展開するメールを送信してください。</p>
+          <p>購入時と別のメールアドレスから送る場合は、本文に購入時のメールアドレスか注文番号をお書きください。</p>
+          <p class="mail-fallback-lead">メールアプリが開かない場合は、次の宛先と本文をコピーして送ってください。</p>
+          <div class="copy-box">
+            <code id="refund-to">support@neolinearpad.com</code>
+            <button type="button" class="copy" data-copy="refund-to">コピー</button>
+          </div>
+          <div class="copy-box copy-box-multiline">
+            <pre id="refund-body">件名：Neo LinearPad 返金の申請
+
+Neo LinearPad の返金を申請します。
+
+購入時のメールアドレス：このメールの差出人
+注文番号（わかれば）：</pre>
+            <button type="button" class="copy" data-copy="refund-body">コピー</button>
+          </div>
+          <p class="support-link">詳しくは<a href="refund.html">返金ポリシー</a>をご覧ください。</p>
+        </div>
       </details>
       <details class="guide">
         <summary>問い合わせとフィードバック</summary>
@@ -172,6 +192,6 @@
     </div>
   </dialog>
 
-  <script src="../assets/site.js?v=5"></script>
+  <script src="../assets/site.js?v=6"></script>
 </body>
 </html>

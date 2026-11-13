@@ -581,3 +581,47 @@ main {
 
 /* Support buttons are more formal than the guides: a softly rounded rectangle, not a pill */
 .guides.support .guide summary { border-radius: 10px; }
+
+/* Support panels: same small text as the opened details, a calm mail button, copy boxes */
+.support-body { padding: 14px 0 6px 4px; font-size: 15px; line-height: 1.65; }
+.support-body p { margin: 0 0 10px; }
+
+.mail-button {
+  display: inline-block;
+  margin: 4px 0 6px;
+  padding: 9px 20px;
+  border: 1.5px solid var(--outline);
+  border-radius: 10px;
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.mail-button:hover { border-color: var(--sub); }
+
+.mail-hint { margin-top: 0 !important; }
+.mail-fallback-lead { margin-top: 18px !important; }
+
+.copy-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 10px 10px 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.copy-box code, .copy-box pre {
+  flex: 1;
+  margin: 0;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.copy-box code { align-self: center; }
+
+.support-link a { color: inherit; }
