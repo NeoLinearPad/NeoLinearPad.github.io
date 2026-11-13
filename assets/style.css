@@ -588,7 +588,7 @@ main {
 
 .mail-button {
   display: inline-block;
-  margin: 2px 0 26px;   /* a clear gap before the supplementary notes */
+  margin: 2px 0 38px;   /* a clear gap before the supplementary notes */
   padding: 6px 14px;    /* hugs the text */
   border-radius: 8px;
   background: var(--chip);
@@ -625,3 +625,4 @@ main {
 .copy-box code { align-self: center; }
 
 .support-link a { color: inherit; }
+.support-body .support-link { margin-bottom: 28px; }  /* room after the last line before the next button */
