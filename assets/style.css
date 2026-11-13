@@ -573,3 +573,9 @@ main {
   .legal-table th, .legal-table td { display: block; width: auto; padding: 4px 0; border: none; }
   .legal-table tr { display: block; padding: 10px 0; border-bottom: 1px solid var(--line); }
 }
+
+/* Support buttons: a divider like the one above "詳細", a little closer underneath */
+.guides.support {
+  border-top: 1px solid var(--line);
+  padding-top: 40px;
+}
