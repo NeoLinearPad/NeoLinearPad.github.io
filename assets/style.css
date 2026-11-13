@@ -105,7 +105,7 @@ main {
 }
 
 /* Details: same heading style as "Neo LinearPad は", a slightly smaller bulleted list */
-.about.details { padding-top: 60px; }  /* a little closer to its divider than the section above */
+.about.details { padding-top: 40px; }  /* sits close under its divider (not mirrored with the space above) */
 
 .details-list {
   margin: 0;
