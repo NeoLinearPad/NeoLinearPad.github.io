@@ -602,6 +602,9 @@ main {
 
 .mail-fallback-lead { margin-top: 18px !important; }
 
+/* "※" lines: a wrapped second line starts under the text, not under the mark */
+.note-line { padding-left: 1.2em; text-indent: -1.2em; }
+
 .copy-box {
   display: flex;
   align-items: flex-start;
@@ -625,4 +628,4 @@ main {
 .copy-box code { align-self: center; }
 
 .support-link a { color: inherit; }
-.support-body .support-link { margin-bottom: 28px; }  /* room after the last line before the next button */
+.support-body .support-link { margin-bottom: 40px; }  /* room after the last line before the next button */
