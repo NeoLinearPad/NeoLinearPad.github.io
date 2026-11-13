@@ -163,7 +163,7 @@ main {
 
 /* "※" note as the last item of the steps: the browser lines its mark up with the numbers
    and wraps its text exactly like the steps, whatever the font. */
-.detail-steps .step-footnote { margin-top: 16px; position: relative; left: -1px; }  /* 1px left: looks aligned to the eye */
+.detail-steps .step-footnote { margin-top: 16px; position: relative; left: -4px; }  /* nudged left: looks aligned to the eye */
 .detail-steps .step-footnote::marker { content: "※"; }
 
 /* Guides: headings that open their steps below */
