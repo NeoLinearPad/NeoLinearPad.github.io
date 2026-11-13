@@ -589,15 +589,16 @@ main {
 .mail-button {
   display: inline-block;
   margin: 2px 0 26px;   /* a clear gap before the supplementary notes */
-  padding: 9px 20px;
-  border: 1.5px solid var(--outline);
-  border-radius: 10px;
+  padding: 6px 14px;    /* hugs the text */
+  border-radius: 8px;
+  background: var(--chip);
   color: var(--text);
   font-weight: 600;
   text-decoration: none;
+  transition: background 0.15s;
 }
 
-.mail-button:hover { border-color: var(--sub); }
+.mail-button:hover { background: var(--line); }
 
 .mail-fallback-lead { margin-top: 18px !important; }
 
