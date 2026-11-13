@@ -603,6 +603,8 @@ main {
 
 /* "※" lines: a wrapped second line starts under the text, not under the mark */
 .note-line { padding-left: 1.2em; text-indent: -1.2em; }
+.support-body .note-line { margin-bottom: 0; }              /* the ※ lines run on like one paragraph */
+.support-body .mail-fallback-lead { margin-bottom: 10px; }  /* then the copy boxes */
 
 .copy-box {
   display: flex;
