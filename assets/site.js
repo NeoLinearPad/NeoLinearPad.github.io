@@ -1,7 +1,8 @@
 // Links that aren't ready yet stay "#" until these are filled in.
 const SITE = {
-  // Latest notarized .dmg on GitHub Releases (fixed file name, so it always points to the newest).
-  downloadURL: "",
+  // Notarized .dmg on GitHub Releases. Tag-specific: releases/latest skips prereleases, so update
+  // the tag here with each new release.
+  downloadURL: "https://github.com/NeoLinearPad/NeoLinearPad/releases/download/v1.0-beta1/Neo-LinearPad.dmg",
   // Lemon Squeezy checkout link for the product ("Share" link in the dashboard). Test-mode links
   // work the same way.
   checkoutURL: "https://neolinearpad.lemonsqueezy.com/checkout/buy/662a8764-a1ee-4a2e-baf4-fc9f876c14f7",  // test mode
