@@ -60,6 +60,15 @@ if (SITE.checkoutURL) {
   document.head.append(script);
 }
 
+const isEnglish = document.documentElement.lang === "en";
+
+// The language switch remembers the choice, so the root page (/) sends the visitor there next time.
+document.querySelectorAll("[data-lang]").forEach((link) => {
+  link.addEventListener("click", () => {
+    try { localStorage.setItem("lang", link.dataset.lang); } catch {}
+  });
+});
+
 // "Copy" buttons: data-copy="<element id>" copies that element's text.
 document.querySelectorAll("[data-copy]").forEach((button) => {
   button.addEventListener("click", async () => {
@@ -67,7 +76,7 @@ document.querySelectorAll("[data-copy]").forEach((button) => {
     try {
       await navigator.clipboard.writeText(text);
       const label = button.textContent;
-      button.textContent = "コピーしました";
+      button.textContent = isEnglish ? "Copied" : "コピーしました";
       setTimeout(() => { button.textContent = label; }, 1600);
     } catch {
       // Clipboard blocked: leave the text for the visitor to select by hand.
@@ -88,6 +97,9 @@ if (setup) {
   if (looksLikeKey) {
     document.getElementById("license-key").textContent = key;
     document.getElementById("activate").href = `neolinearpad://activate?key=${encodeURIComponent(key)}`;
+    // Switching language keeps the key (in "#", so it stays out of server logs).
+    const langLink = document.querySelector(".lang-switch");
+    if (langLink) langLink.href += `#key=${encodeURIComponent(key)}`;
   }
   // Start the download right away (the steps below explain what to do with it).
   if (SITE.downloadURL) location.assign(SITE.downloadURL);

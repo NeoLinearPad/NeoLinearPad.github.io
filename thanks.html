@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <title>Neo LinearPad</title>
+  <!-- After-purchase link for any language: sends the buyer to en/ or ja/thanks.html the same
+       way the root page picks a language, keeping ?key=… so the license can be set up there. -->
+  <script>
+    let lang = null;
+    try { lang = localStorage.getItem("lang"); } catch {}
+    if (lang !== "ja" && lang !== "en") {
+      lang = /^ja\b/i.test((navigator.languages && navigator.languages[0]) || navigator.language || "") ? "ja" : "en";
+    }
+    location.replace(lang + "/thanks.html" + location.search + location.hash);
+  </script>
+</head>
+<body>
+  <p><a href="en/thanks.html">Continue</a></p>
+</body>
+</html>

@@ -640,3 +640,14 @@ main {
 .contact-group-last .mail-button { margin-bottom: 63px !important; }
 .contact-group-last + .note-line { margin-bottom: 10px; }
 .support-body .copy-box:last-child { margin-bottom: 40px; }
+
+/* Language switch: a small link in the top right corner of the top and thanks pages. */
+.lang-switch {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  font-size: 14px;
+  color: var(--sub);
+  text-decoration: none;
+}
+.lang-switch:hover { color: var(--text); }
