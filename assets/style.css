@@ -632,5 +632,6 @@ main {
 .support-body .support-link { margin-bottom: 40px; }  /* room after the last line before the next button */
 
 /* Contact & feedback: two short lead + button pairs */
-.contact-group .mail-button { margin-bottom: 44px; }
+.contact-group .support-lead { margin-bottom: 4px; }        /* button sits right under its line */
+.contact-group .mail-button { margin-top: 0; margin-bottom: 44px; }
 .contact-group:last-child .mail-button { margin-bottom: 40px; }
