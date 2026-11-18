@@ -635,3 +635,8 @@ main {
 .contact-group .support-lead { margin-bottom: 6px; }        /* button sits right under its line */
 .contact-group .mail-button { margin-top: 0; margin-bottom: 44px; }
 .contact-group:last-child .mail-button { margin-bottom: 40px; }
+
+/* Contact panel with the copy fallback underneath: same rhythm as the refund panel */
+.contact-group-last .mail-button { margin-bottom: 63px !important; }
+.contact-group-last + .note-line { margin-bottom: 10px; }
+.support-body .copy-box:last-child { margin-bottom: 40px; }
