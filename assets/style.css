@@ -651,3 +651,19 @@ main {
   text-decoration: none;
 }
 .lang-switch:hover { color: var(--text); }
+
+/* Two screenshots side by side (e.g. Safari and Chrome), each with a small label under it. */
+.img-pair {
+  display: flex;
+  gap: 16px;
+  max-width: 600px;
+  margin: 12px 0 0;
+}
+.img-pair figure { flex: 1; margin: 0; }
+.guide-body .img-pair img { max-width: none; margin: 0; }
+.img-pair figcaption {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--sub);
+  text-align: center;
+}
