@@ -651,3 +651,6 @@ main {
   text-decoration: none;
 }
 .lang-switch:hover { color: var(--text); }
+
+/* Note right under the activate button on the thanks page */
+.action + .step-aside { margin-top: 14px; }
