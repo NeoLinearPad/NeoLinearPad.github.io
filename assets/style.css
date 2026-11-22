@@ -654,3 +654,12 @@ main {
 
 /* Note right under the activate button on the thanks page */
 .action + .step-aside { margin-top: 14px; }
+
+/* Screenshot inside a thanks-page step (same size as the guide images) */
+.step-image {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  margin: 6px 0 12px;
+}
