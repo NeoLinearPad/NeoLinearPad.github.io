@@ -663,3 +663,7 @@ main {
   height: auto;
   margin: 6px 0 12px;
 }
+
+/* A note on the thanks page that must not be missed */
+.step-note { color: #d70015; }
+@media (prefers-color-scheme: dark) { .step-note { color: #ff6961; } }
