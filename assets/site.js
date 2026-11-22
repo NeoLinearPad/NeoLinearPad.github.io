@@ -101,6 +101,12 @@ if (setup) {
     const langLink = document.querySelector(".lang-switch");
     if (langLink) langLink.href += `#key=${encodeURIComponent(key)}`;
   }
-  // Start the download right away (the steps below explain what to do with it).
-  if (SITE.downloadURL) location.assign(SITE.downloadURL);
+  // Start the download once the page has finished loading (the steps below explain what to do
+  // with it). Starting it earlier makes Safari stop loading the rest of the page, leaving the
+  // icon broken.
+  if (SITE.downloadURL) {
+    const start = () => location.assign(SITE.downloadURL);
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+  }
 }
