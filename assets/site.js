@@ -90,8 +90,17 @@ document.querySelectorAll("[data-copy]").forEach((button) => {
 const setup = document.getElementById("setup");
 if (setup) {
   const fromQuery = new URLSearchParams(location.search).get("key");
-  const key = fromQuery ?? new URLSearchParams(location.hash.slice(1)).get("key") ?? "";
+  const fromLink = fromQuery ?? new URLSearchParams(location.hash.slice(1)).get("key");
   if (fromQuery) history.replaceState(null, "", location.pathname);
+  // The key is also kept in this tab only (sessionStorage), so a reload still shows it and the
+  // activate button: the address bar no longer has it. Closing the tab forgets it.
+  let key = fromLink ?? "";
+  try {
+    if (fromLink) sessionStorage.setItem("licenseKey", fromLink);
+    else key = sessionStorage.getItem("licenseKey") ?? "";
+  } catch {
+    // Storage blocked (private browsing etc.): fall back to the email.
+  }
   const looksLikeKey = /^[A-Za-z0-9-]{8,64}$/.test(key);
   setup.dataset.hasKey = looksLikeKey ? "yes" : "no";
   if (looksLikeKey) {
@@ -104,8 +113,13 @@ if (setup) {
   // Start the download once the page has finished loading (the steps below explain what to do
   // with it). Starting it earlier makes Safari stop loading the rest of the page, leaving the
   // icon broken.
-  if (SITE.downloadURL) {
-    const start = () => location.assign(SITE.downloadURL);
+  let downloaded = false;
+  try { downloaded = sessionStorage.getItem("downloadStarted") === "yes"; } catch {}
+  if (SITE.downloadURL && !downloaded) {
+    const start = () => {
+      try { sessionStorage.setItem("downloadStarted", "yes"); } catch {}
+      location.assign(SITE.downloadURL);
+    };
     if (document.readyState === "complete") start();
     else window.addEventListener("load", start, { once: true });
   }
