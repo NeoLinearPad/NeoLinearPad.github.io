@@ -40,6 +40,25 @@ document.querySelectorAll("dialog").forEach((dialog) => {
   });
 });
 
+// Links with data-open-guide="<details id>" open that guide (expanded) and scroll to it.
+// Opening the page with that id in the address (#install-guide) does the same.
+function openGuide(id, smooth) {
+  const guide = document.getElementById(id);
+  if (!(guide instanceof HTMLDetailsElement)) return false;
+  guide.open = true;
+  guide.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+  return true;
+}
+document.querySelectorAll("[data-open-guide]").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    if (openGuide(link.dataset.openGuide, true)) {
+      event.preventDefault();
+      history.replaceState(null, "", "#" + link.dataset.openGuide);
+    }
+  });
+});
+if (location.hash.length > 1) openGuide(location.hash.slice(1), false);
+
 // Download links.
 if (SITE.downloadURL) {
   document.querySelectorAll("[data-download]").forEach((link) => { link.href = SITE.downloadURL; });

@@ -667,3 +667,13 @@ main {
 /* A note on the thanks page that must not be missed */
 .step-note { color: #d70015; }
 @media (prefers-color-scheme: dark) { .step-note { color: #ff6961; } }
+
+/* A blue text link inside guide steps (e.g. "詳しくはこちら") */
+.inline-link { color: #0066cc; text-decoration: underline; text-underline-offset: 2px; }
+.inline-link:hover { color: #004f9e; }
+@media (prefers-color-scheme: dark) {
+  .inline-link { color: #4da3ff; }
+  .inline-link:hover { color: #7dbbff; }
+}
+/* Leave a little room above a guide scrolled into view */
+.guide { scroll-margin-top: 24px; }
