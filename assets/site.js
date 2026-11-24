@@ -106,6 +106,10 @@ if (SITE.checkoutURL) {
     if (isLemon) {
       url.searchParams.set("embed", "1");
       link.classList.add("lemonsqueezy-button");
+    } else {
+      // Polar shows its checkout in the page's language (Settings → Preview Features → Localized
+      // Checkout must be on). Browser translation can't translate the checkout, so this matters.
+      url.searchParams.set("locale", document.documentElement.lang === "ja" ? "ja" : "en");
     }
     link.href = url.toString();
     link.addEventListener("click", () => document.querySelector("dialog[open]")?.close());
