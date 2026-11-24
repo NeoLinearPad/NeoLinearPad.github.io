@@ -3,9 +3,12 @@ const SITE = {
   // Notarized .dmg on GitHub Releases. Tag-specific: releases/latest skips prereleases, so update
   // the tag here with each new release.
   downloadURL: "https://github.com/NeoLinearPad/NeoLinearPad/releases/download/v1.0-beta1/Neo-LinearPad.dmg",
-  // Lemon Squeezy checkout link for the product ("Share" link in the dashboard). Test-mode links
-  // work the same way.
+  // Checkout link of the product. Polar: a Checkout Link (https://buy.polar.sh/polar_cl_…), whose
+  // Success URL is https://neolinearpad.com/thanks.html?checkout_id={CHECKOUT_ID}.
+  // Still the old Lemon Squeezy test link until the Polar product exists (Lemon closes 2027-03-31).
   checkoutURL: "https://neolinearpad.lemonsqueezy.com/checkout/buy/662a8764-a1ee-4a2e-baf4-fc9f876c14f7",  // test mode
+  // Polar only: the Worker (tools/key-worker) that turns the checkout id into the license key.
+  keyEndpoint: "",
 };
 
 // Opens a dialog with the dialog itself focused, not its first button (the browser's default
@@ -95,19 +98,25 @@ if (SITE.downloadURL) {
   document.querySelectorAll("[data-download]").forEach((link) => { link.href = SITE.downloadURL; });
 }
 
-// Buy links open Lemon Squeezy's checkout on top of the page (lemon.js overlay).
+// Buy links. Polar: the checkout opens in this tab and comes back to thanks.html.
+// Lemon Squeezy (old): its checkout opens on top of the page (lemon.js overlay).
 if (SITE.checkoutURL) {
+  const isLemon = new URL(SITE.checkoutURL).hostname.endsWith("lemonsqueezy.com");
   document.querySelectorAll("[data-checkout]").forEach((link) => {
     const url = new URL(SITE.checkoutURL);
-    url.searchParams.set("embed", "1");
+    if (isLemon) {
+      url.searchParams.set("embed", "1");
+      link.classList.add("lemonsqueezy-button");
+    }
     link.href = url.toString();
-    link.classList.add("lemonsqueezy-button");
     link.addEventListener("click", () => document.querySelector("dialog[open]")?.close());
   });
-  const script = document.createElement("script");
-  script.src = "https://app.lemonsqueezy.com/js/lemon.js";
-  script.defer = true;
-  document.head.append(script);
+  if (isLemon) {
+    const script = document.createElement("script");
+    script.src = "https://app.lemonsqueezy.com/js/lemon.js";
+    script.defer = true;
+    document.head.append(script);
+  }
 }
 
 const isEnglish = document.documentElement.lang === "en";
@@ -139,26 +148,58 @@ document.querySelectorAll("[data-copy]").forEach((button) => {
 // address bar right away, so it isn't left in bookmarks or picked up by analytics later.
 const setup = document.getElementById("setup");
 if (setup) {
-  const fromQuery = new URLSearchParams(location.search).get("key");
-  const fromLink = fromQuery ?? new URLSearchParams(location.hash.slice(1)).get("key");
-  if (fromQuery) history.replaceState(null, "", location.pathname);
-  // The key is also kept in this tab only (sessionStorage), so a reload still shows it and the
-  // activate button: the address bar no longer has it. Closing the tab forgets it.
-  let key = fromLink ?? "";
-  try {
-    if (fromLink) sessionStorage.setItem("licenseKey", fromLink);
-    else key = sessionStorage.getItem("licenseKey") ?? "";
-  } catch {
-    // Storage blocked (private browsing etc.): fall back to the email.
-  }
-  const looksLikeKey = /^[A-Za-z0-9-]{8,64}$/.test(key);
-  setup.dataset.hasKey = looksLikeKey ? "yes" : "no";
-  if (looksLikeKey) {
-    document.getElementById("license-key").textContent = key;
-    document.getElementById("activate").href = `neolinearpad://activate?key=${encodeURIComponent(key)}`;
+  // The key arrives as ?key= (old Lemon Squeezy links, our own links) or #key= (language switch),
+  // or, with Polar, as ?checkout_id= that the Worker turns into the key. Both are removed from the
+  // address bar right away so they don't stay in bookmarks or history.
+  const query = new URLSearchParams(location.search);
+  const fromLink = query.get("key") ?? new URLSearchParams(location.hash.slice(1)).get("key");
+  const checkoutFromLink = query.get("checkout_id");
+  if (query.has("key") || query.has("checkout_id")) history.replaceState(null, "", location.pathname);
+
+  // Kept in this tab only (sessionStorage), so a reload or the language switch still has them.
+  // Closing the tab forgets them.
+  const remember = (name, value) => { try { sessionStorage.setItem(name, value); } catch {} };
+  const recall = (name) => { try { return sessionStorage.getItem(name) ?? ""; } catch { return ""; } };
+  if (fromLink) remember("licenseKey", fromLink);
+  if (checkoutFromLink) remember("checkoutID", checkoutFromLink);
+  const key = fromLink ?? recall("licenseKey");
+  const checkoutID = checkoutFromLink ?? recall("checkoutID");
+
+  const looksLikeKey = (value) => /^[A-Za-z0-9_-]{8,100}$/.test(value);
+  const showKey = (value) => {
+    setup.dataset.hasKey = "yes";
+    document.getElementById("license-key").textContent = value;
+    document.getElementById("activate").href = `neolinearpad://activate?key=${encodeURIComponent(value)}`;
     // Switching language keeps the key (in "#", so it stays out of server logs).
     const langLink = document.querySelector(".lang-switch");
-    if (langLink) langLink.href += `#key=${encodeURIComponent(key)}`;
+    if (langLink) langLink.href = langLink.href.split("#")[0] + `#key=${encodeURIComponent(value)}`;
+  };
+
+  if (looksLikeKey(key)) {
+    showKey(key);
+  } else {
+    setup.dataset.hasKey = "no";
+    // Polar: ask the Worker for the key. Right after payment it may take a few seconds to exist.
+    if (checkoutID && SITE.keyEndpoint) {
+      const fetchKey = async (triesLeft) => {
+        try {
+          const response = await fetch(`${SITE.keyEndpoint}?checkout_id=${encodeURIComponent(checkoutID)}`);
+          if (response.status === 200) {
+            const { key: fetched } = await response.json();
+            if (looksLikeKey(fetched)) {
+              remember("licenseKey", fetched);
+              showKey(fetched);
+            }
+            return;
+          }
+          if (response.status === 404) return;  // unknown or old: the email has the key
+        } catch {
+          // network trouble: try again
+        }
+        if (triesLeft > 0) setTimeout(() => fetchKey(triesLeft - 1), 2000);
+      };
+      fetchKey(20);
+    }
   }
   // Start the download once the page has finished loading (the steps below explain what to do
   // with it). Starting it earlier makes Safari stop loading the rest of the page, leaving the
