@@ -216,7 +216,9 @@ main {
   padding-left: 1.4em;
 }
 
-.guide-body li { margin-bottom: 20px; }
+/* Steps: a little more room between steps than between a step's text and its picture, so each
+   text reads as belonging to the picture below it. Kept small so the page doesn't feel long. */
+.guide-body li { margin-bottom: 34px; }
 
 /* Screenshots under a step (they carry their own rounded corners) */
 .guide-body img {
@@ -224,11 +226,11 @@ main {
   width: 100%;
   max-width: 440px;
   height: auto;
-  margin: 12px 0 0;
+  margin: 8px 0 0;
 }
 
 /* A second image in the same step gets more room above it */
-.guide-body img + img { margin-top: 24px; }
+.guide-body img + img { margin-top: 16px; }
 
 /* Download dialog: trial or buy */
 .get-dialog {
