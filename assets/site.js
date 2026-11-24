@@ -60,7 +60,24 @@ document.querySelectorAll("[data-open-guide]").forEach((link) => {
 if (location.hash.length > 1) openGuide(location.hash.slice(1), false);
 
 // "Close the guide" buttons: close the guide they sit in and bring its heading back into view.
+// Their dashed pill outline is an SVG sized to the button (CSS "dashed" can't set dash length).
 document.querySelectorAll("[data-close-guide]").forEach((button) => {
+  const ns = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(ns, "svg");
+  svg.setAttribute("aria-hidden", "true");
+  const rect = document.createElementNS(ns, "rect");
+  svg.append(rect);
+  button.prepend(svg);
+  const fit = () => {
+    const w = button.offsetWidth, h = button.offsetHeight;  // border box
+    if (!w || !h) return;
+    for (const [k, v] of Object.entries({ x: 0.75, y: 0.75, width: w - 1.5, height: h - 1.5, rx: (h - 1.5) / 2 })) {
+      rect.setAttribute(k, v);
+    }
+  };
+  new ResizeObserver(fit).observe(button);
+  fit();
+
   button.addEventListener("click", () => {
     const guide = button.closest("details");
     if (!guide) return;

@@ -686,7 +686,8 @@ main {
   gap: 14px;
   margin: 8px 0 0 -16px;  /* back to the heading's left edge (the guide body is indented 16px) */
   padding: 12px 20px 12px 24px;
-  border: 1.5px dashed var(--outline);
+  position: relative;
+  border: 1.5px solid transparent;  /* keeps the size; the dashed outline is drawn by site.js */
   border-radius: 999px;
   background: var(--bg);
   color: var(--text);
@@ -696,7 +697,24 @@ main {
   cursor: pointer;
   transition: border-color 0.15s;
 }
-.guide-close:hover { border-color: var(--sub); }
+.guide-close:hover { border-color: transparent; }
+/* Dashed outline as an SVG, for longer dashes than CSS "dashed" draws */
+.guide-close svg {
+  position: absolute;
+  inset: -1.5px;
+  width: calc(100% + 3px);
+  height: calc(100% + 3px);
+  overflow: visible;
+  pointer-events: none;
+}
+.guide-close rect {
+  fill: none;
+  stroke: var(--outline);
+  stroke-width: 1.5;
+  stroke-dasharray: 9 4.5;
+  transition: stroke 0.15s;
+}
+.guide-close:hover rect { stroke: var(--sub); }
 .guide-close::after {
   content: "";
   width: 7px;
