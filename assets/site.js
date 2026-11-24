@@ -5,10 +5,9 @@ const SITE = {
   downloadURL: "https://github.com/NeoLinearPad/NeoLinearPad/releases/download/v1.0-beta1/Neo-LinearPad.dmg",
   // Checkout link of the product. Polar: a Checkout Link (https://buy.polar.sh/polar_cl_…), whose
   // Success URL is https://neolinearpad.com/thanks.html?checkout_id={CHECKOUT_ID}.
-  // Still the old Lemon Squeezy test link until the Polar product exists (Lemon closes 2027-03-31).
-  checkoutURL: "https://neolinearpad.lemonsqueezy.com/checkout/buy/662a8764-a1ee-4a2e-baf4-fc9f876c14f7",  // test mode
+  checkoutURL: "https://buy.polar.sh/polar_cl_mDtcVjB6m9XSSQkve1hj6mQmcCN8rubk8ueK73zvhvY",
   // Polar only: the Worker (tools/key-worker) that turns the checkout id into the license key.
-  keyEndpoint: "",
+  keyEndpoint: "https://key.neolinearpad.com/key",
 };
 
 // Opens a dialog with the dialog itself focused, not its first button (the browser's default
