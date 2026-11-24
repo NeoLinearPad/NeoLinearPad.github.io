@@ -82,7 +82,10 @@ document.querySelectorAll("[data-close-guide]").forEach((button) => {
     const guide = button.closest("details");
     if (!guide) return;
     guide.open = false;
-    guide.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Bring the heading to about 40% down the screen (not the very top), so it's easy to spot
+    // and what comes after it is right there to read.
+    const top = guide.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.4;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
     if (location.hash === "#" + guide.id) history.replaceState(null, "", location.pathname);
   });
 });
