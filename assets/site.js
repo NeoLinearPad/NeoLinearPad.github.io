@@ -180,9 +180,11 @@ if (setup) {
   if (looksLikeKey(key)) {
     showKey(key);
   } else {
-    setup.dataset.hasKey = "no";
-    // Polar: ask the Worker for the key. Right after payment it may take a few seconds to exist.
+    // Polar: ask the Worker for the key. Right after payment it may take a few seconds to exist,
+    // so the page says it's getting the key instead of pointing to the email straight away.
+    setup.dataset.hasKey = checkoutID && SITE.keyEndpoint ? "loading" : "no";
     if (checkoutID && SITE.keyEndpoint) {
+      const giveUp = () => { setup.dataset.hasKey = "no"; };
       const fetchKey = async (triesLeft) => {
         try {
           const response = await fetch(`${SITE.keyEndpoint}?checkout_id=${encodeURIComponent(checkoutID)}`);
@@ -194,11 +196,12 @@ if (setup) {
             }
             return;
           }
-          if (response.status === 404) return;  // unknown or old: the email has the key
+          if (response.status === 404) return giveUp();  // unknown or old: the email has the key
         } catch {
           // network trouble: try again
         }
         if (triesLeft > 0) setTimeout(() => fetchKey(triesLeft - 1), 2000);
+        else giveUp();
       };
       fetchKey(20);
     }

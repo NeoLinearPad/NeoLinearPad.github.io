@@ -489,7 +489,12 @@ main {
 
 /* Shown depending on whether the page was opened with a key */
 .setup[data-has-key="no"] .when-key,
-.setup[data-has-key="yes"] .when-no-key { display: none; }
+.setup[data-has-key="yes"] .when-no-key,
+.setup[data-has-key="loading"] .when-key,
+.setup[data-has-key="loading"] .when-no-key,
+.setup:not([data-has-key="loading"]) .when-loading { display: none; }
+/* While the key is being fetched (a few seconds after paying) */
+.when-loading { color: var(--sub); }
 
 @media (max-width: 600px) {
   .hero { padding: 64px 0 64px; }
