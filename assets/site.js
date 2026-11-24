@@ -59,6 +59,17 @@ document.querySelectorAll("[data-open-guide]").forEach((link) => {
 });
 if (location.hash.length > 1) openGuide(location.hash.slice(1), false);
 
+// "Close the guide" buttons: close the guide they sit in and bring its heading back into view.
+document.querySelectorAll("[data-close-guide]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const guide = button.closest("details");
+    if (!guide) return;
+    guide.open = false;
+    guide.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (location.hash === "#" + guide.id) history.replaceState(null, "", location.pathname);
+  });
+});
+
 // Download links.
 if (SITE.downloadURL) {
   document.querySelectorAll("[data-download]").forEach((link) => { link.href = SITE.downloadURL; });

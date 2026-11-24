@@ -677,3 +677,31 @@ main {
 }
 /* Leave a little room above a guide scrolled into view */
 .guide { scroll-margin-top: 24px; }
+
+/* "Close the guide" at the end of an open guide: the same pill as the heading, dashed, with the
+   chevron pointing up. It closes the guide and brings its heading back into view. */
+.guide-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin: 8px 0 0 -16px;  /* back to the heading's left edge (the guide body is indented 16px) */
+  padding: 12px 20px 12px 24px;
+  border: 1.5px dashed var(--outline);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.guide-close:hover { border-color: var(--sub); }
+.guide-close::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-right: 1.8px solid var(--sub);
+  border-bottom: 1.8px solid var(--sub);
+  transform: translateY(2px) rotate(-135deg);
+}
