@@ -2,7 +2,7 @@
 const SITE = {
   // Notarized .dmg on GitHub Releases. Tag-specific: releases/latest skips prereleases, so update
   // the tag here with each new release.
-  downloadURL: "https://github.com/NeoLinearPad/NeoLinearPad/releases/download/v1.0-beta1/Neo-LinearPad.dmg",
+  downloadURL: "https://github.com/NeoLinearPad/NeoLinearPad/releases/download/v1.0/Neo-LinearPad.dmg",
   // Checkout link of the product. Polar: a Checkout Link (https://buy.polar.sh/polar_cl_…), whose
   // Success URL is https://neolinearpad.com/thanks.html?checkout_id={CHECKOUT_ID}.
   checkoutURL: "https://buy.polar.sh/polar_cl_mDtcVjB6m9XSSQkve1hj6mQmcCN8rubk8ueK73zvhvY",

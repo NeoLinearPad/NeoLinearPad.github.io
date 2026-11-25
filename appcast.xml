@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>Neo LinearPad</title>
+    <link>https://neolinearpad.com/appcast.xml</link>
+    <description>Updates for Neo LinearPad</description>
+    <language>en</language>
+    <item>
+      <title>Version 1.0</title>
+      <pubDate>Wed, 25 Nov 2026 21:20:05 GMT</pubDate>
+      <sparkle:version>2</sparkle:version>
+      <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <enclosure url="https://github.com/NeoLinearPad/NeoLinearPad/releases/download/v1.0/Neo-LinearPad-1.0.zip" length="3827946" type="application/octet-stream" sparkle:edSignature="dVTljKgh7OTl5Ko1zrp7wuEK2THXI3rkGBmHMnrxdojpXYX+IA187oAy3N1tlkI4rFfdPbXrI7XRrsH8HfLOCA=="/>
+    </item>
+  </channel>
+</rss>
